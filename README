@@ -1,1 +1,16 @@
 This repository is a place where I will send periodic automatic commits to
+
+How to make this work:
+1. Put the python script and proof.txt in the same folder
+2. Create a cron job as follows:
+- Suppose we want the script to run every five minutes
+- So in a shell, run the following:
+
+$> crontab -e
+# The cronjob list will now open (use your editor of choice)
+
+# add this _exactly_ to the end of the list (make sure there is a blank line at the end)
+*/5 * * * * cd <path_to_script>; python bogus.py >> /tmp/bogus_log.txt
+# The logging is optional but it's helpful for diagnostics
+
+Once the cron tab is running, sit back and watch your commit graph grow. :--)
